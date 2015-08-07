@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="1210dip"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"    
+>
+ <ImageView  android:id="@+id/itemImage"
+ 	android:layout_width="150dip"
+ 	android:layout_height="wrap_content"
+ 	android:layout_centerHorizontal="true" 	
+	></ImageView>
+<TextView
+android:id="@+id/itemName"
+android:layout_width="150dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+ >
+</TextView>
+<TextView
+android:id="@+id/itemTime"
+ android:layout_width="150dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+>
+ </TextView>
+ <TextView
+android:id="@+id/itemKaohao"
+android:layout_width="160dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+>
+ 　　    </TextView>
+<TextView
+android:id="@+id/itemXuehao"
+android:layout_width="160dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+>
+ 　　    </TextView>
+<TextView
+android:id="@+id/itemBanJi"
+android:layout_width="150dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+>
+ 　　    </TextView>
+<TextView
+android:id="@+id/itemZhuangtai"
+android:layout_width="150dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+>
+ 　　    </TextView>
+<TextView
+android:id="@+id/itemFenshu"
+android:layout_width="160dip"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:textColor="#000000"
+android:textSize="23dip"
+>
+</TextView>  
+</LinearLayout>
