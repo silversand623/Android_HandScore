@@ -172,7 +172,7 @@
         android:id="@+id/mylist"
         android:layout_width="1240dp"
         android:layout_height="500dp"
-        android:layout_alignRight="@+id/textView1"
+        android:layout_alignRight="@+id/tv_setIP"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="157dp"
         android:divider="#222222"
