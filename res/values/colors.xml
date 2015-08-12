@@ -54,5 +54,6 @@
   <color name="green">#66FF00</color>  
   <color name="red">#FF0000</color>
    <color name="temple">#333333</color>
-     <color name="linecolor">#222222</color>
+   <color name="linecolor">#222222</color>
+   <color name="ScoreMainFontColor">#000000</color>
 </resources>
