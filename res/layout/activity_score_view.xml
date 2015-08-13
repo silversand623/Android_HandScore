@@ -56,7 +56,7 @@
 	  />
 	   <TextView
 	   android:id="@+id/KaoZhan"
-	   android:layout_width="220dp"
+	   android:layout_width="380dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"	
 	   android:gravity="left"   

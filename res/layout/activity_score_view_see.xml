@@ -35,7 +35,7 @@
 	  android:layout_width="fill_parent"
 	  android:layout_height="46dip"	  
 	  android:gravity="left" 	  
-	  android:paddingRight="5dip"	  
+	  android:paddingRight="5dip"	 
 	  >
 	    <TextView	  
 	  android:layout_width="200dp"
@@ -47,7 +47,7 @@
 	  />
 	   <TextView
 	   android:id="@+id/KaoZhan"
-	   android:layout_width="350dp"
+	   android:layout_width="380dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"	
 	   android:gravity="left"   
@@ -266,14 +266,14 @@
 		  android:text="100.0"
 		 />	
 	  </TableRow>
-	 </TableLayout>	 
-		 <ImageView    
-         android:id="@+id/iv_sign"  
-        android:layout_marginTop="10dip"  
-         android:layout_width="wrap_content"  
-         android:layout_height="wrap_content"    
-        android:layout_gravity="center"  
-         />
+	 </TableLayout>
+		 <ImageView
+		     android:id="@+id/iv_sign"
+		     android:layout_width="400dp"
+		     android:layout_height="300dp"
+		     android:layout_gravity="right"
+		     android:layout_marginTop="10dip"
+		     />
 	   </LinearLayout>
 	   </LinearLayout>
 </LinearLayout>
