@@ -98,6 +98,10 @@
             android:name="com.example.webview.ScoreViewSeeActivity"
             android:label="@string/title_activity_score_view_see" >
         </activity>
+        <activity
+            android:name="com.example.webview.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>

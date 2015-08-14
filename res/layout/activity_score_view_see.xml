@@ -145,6 +145,7 @@
 	  android:layout_height="fill_parent"	  
 	  android:gravity="top" 
 	  android:layout_gravity="top"
+	  android:background="#ffffff"
 	  >
 	  <TableLayout	 
 	  android:layout_width="fill_parent"
