@@ -57,12 +57,11 @@
         android:id="@+id/eTextInterval"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10" 
+        android:layout_weight="1"       
         android:text="1"   
-        android:layout_marginLeft="50dp"    
-        android:inputType="numberDecimal" >
-
+        android:layout_marginLeft="50dp"
+        android:digits="0123456789."
+        android:inputType="textNoSuggestions">
         <requestFocus />
     </EditText>   
     </LinearLayout>
@@ -82,9 +81,8 @@
    <com.example.webview.SegmentSet
  	 android:id="@+id/SegmentSetBar"
  	android:layout_width="150dip"
-	android:layout_height="wrap_content"
-	android:paddingRight="5dip"
-	android:layout_marginLeft="50dp"    
+	android:layout_height="wrap_content"	
+	android:layout_marginLeft="200dp"    
 	>
  </com.example.webview.SegmentSet>
     </LinearLayout>

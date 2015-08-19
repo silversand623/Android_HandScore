@@ -6,8 +6,8 @@
     android:gravity="center"    
 >
  <ImageView  android:id="@+id/itemImage"
- 	android:layout_width="150dip"
- 	android:layout_height="wrap_content"
+ 	android:layout_width="60dip"
+ 	android:layout_height="60dip" 	
  	android:layout_centerHorizontal="true" 	
 	></ImageView>
 <TextView
