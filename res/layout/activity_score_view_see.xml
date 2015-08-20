@@ -134,6 +134,8 @@
         android:layout_height="590dip"     
        	android:fastScrollEnabled="true" 
        	android:gravity="center"
+       android:childDivider="@color/linecolor"
+       	android:dividerHeight="1px"    
        	android:layout_gravity="center"     
 	   > 
 	  </ExpandableListView>    

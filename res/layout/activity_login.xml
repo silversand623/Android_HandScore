@@ -42,8 +42,6 @@
      android:layout_marginTop="405dp"
     android:layout_marginLeft="570dp"
                 android:minHeight="40dp"
-	          
-	         
                 android:textSize="10pt"
                 android:textColor="#333333"
               android:text="当前考试为:"

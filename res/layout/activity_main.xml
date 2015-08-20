@@ -182,6 +182,9 @@
         android:layout_height="590dip"     
        	android:fastScrollEnabled="true" 
        	android:gravity="center"
+       	android:divider="@color/linecolor"
+       	android:dividerHeight="1px"
+       	android:listSelector="@color/SelectBgColor"
        	android:layout_gravity="center"
         >       
     </ListView>
