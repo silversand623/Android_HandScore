@@ -42,7 +42,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="com.example.webview.SplashActivity"
+            android:name="com.example.webview.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
@@ -53,12 +53,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.webview.MainActivity" >
-        </activity>
-        <activity
-            android:name="com.example.webview.LoginActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape" >
-        </activity>
+        </activity>        
         <activity
             android:name="com.example.webview.CaptureActivity"
             android:screenOrientation="portrait" >

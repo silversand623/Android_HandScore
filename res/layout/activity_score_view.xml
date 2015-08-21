@@ -47,7 +47,7 @@
 	  android:paddingRight="5dip"	  
 	  >
 	    <TextView	  
-	  android:layout_width="150dp"
+	  android:layout_width="100dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"	 
 	   android:gravity="right"
@@ -106,7 +106,7 @@
 	  android:paddingRight="5dip"	  
 	  >
 	    <TextView
-	      android:layout_width="150dp"
+	      android:layout_width="120dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"
 	android:gravity="right"  
