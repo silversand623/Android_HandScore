@@ -13,7 +13,7 @@
 	  > 
 	   <TextView
 	   android:id="@+id/ExamName"
-	  android:layout_width="1150dp"
+	  android:layout_width="1170dp"
 	  android:layout_height="80dp"
 	   android:textSize="30dip"
 	  android:textColor="#ffffff"
