@@ -39,15 +39,15 @@
 	   android:gravity="center"
 	  />		
 	  </LinearLayout>
-	    <LinearLayout
+	      <LinearLayout
 	  android:orientation="horizontal"
 	  android:layout_width="fill_parent"
-	  android:layout_height="46dip"	  
+	  android:layout_height="40dip"	  
 	  android:gravity="left" 	  
 	  android:paddingRight="5dip"	  
 	  >
 	    <TextView	  
-	  android:layout_width="100dp"
+	  android:layout_width="150dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"	 
 	   android:gravity="right"
@@ -56,7 +56,7 @@
 	  />
 	   <TextView
 	   android:id="@+id/KaoZhan"
-	   android:layout_width="380dp"
+	   android:layout_width="460dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"	
 	   android:gravity="left"   
@@ -73,7 +73,7 @@
 	  />
 	  <TextView
 	   android:id="@+id/FangJian"
-	  android:layout_width="150dp"
+	  android:layout_width="360dp"
 	  android:layout_height="wrap_content"
 	   android:textSize="20dip"
 	  android:gravity="left"  
@@ -98,6 +98,31 @@
 	   android:textColor="@color/ScoreMainFontColor"
 	  />		
 		</LinearLayout>
+		 <LinearLayout
+	  android:orientation="horizontal"
+	  android:layout_width="fill_parent"
+	  android:layout_height="40dip"	  
+	  android:gravity="left" 	  
+	  android:paddingRight="5dip"	  
+	  >
+	    <TextView
+	      android:layout_width="150dp"
+	  android:layout_height="wrap_content"
+	   android:textSize="20dip"
+	android:gravity="right"  
+	   android:text="评分表："	
+	   android:textColor="@color/ScoreMainFontColor"  
+	  />
+	   <TextView
+	   android:id="@+id/PingFenBiaoName"
+	  android:layout_width="600dp"
+	  android:layout_height="wrap_content"
+	   android:textSize="20dip"
+	  android:gravity="left"  
+	   android:text="评分表名称"	 
+	   android:textColor="@color/ScoreMainFontColor"
+	  />		
+	   </LinearLayout>
 	  <LinearLayout
 	  android:orientation="horizontal"
 	  android:layout_width="wrap_content"
@@ -108,20 +133,20 @@
 	  android:orientation="vertical"
 	  android:layout_width="fill_parent"
 	  android:layout_height="wrap_content"	  
-	  android:gravity="center" 
-	  android:layout_gravity="center"
-	   android:paddingLeft="20dip"
+	  android:gravity="left" 
+	  android:layout_gravity="left"	  
 	  > 
+
 	  <LinearLayout
-	  android:orientation="horizontal"
-	  android:layout_width="wrap_content"
-	  android:layout_height="40dip"
-	  android:background="#DFDEE3"	 
-	  android:gravity="center" 
-	  android:layout_gravity="center"	 
-	  >
+	      android:layout_width="wrap_content"
+	      android:layout_height="40dip"
+	      android:layout_gravity="left"
+	      android:background="#DFDEE3"
+	      android:gravity="left"
+	      android:orientation="horizontal" >
+
 	   <TextView
-	  android:layout_width="650dip"
+	  android:layout_width="700dip"
 	  android:layout_height="wrap_content"
 	   android:textSize="21dip"
 	  android:textColor="@color/ScoreMainFontColor"
@@ -129,7 +154,7 @@
 	   android:gravity="center"
 	  />	 
 	  <TextView
-	  android:layout_width="180dip"
+	  android:layout_width="200dip"
 	  android:layout_height="wrap_content"
 	  android:textSize="21dip"
 	  android:textColor="@color/ScoreMainFontColor"
@@ -137,16 +162,17 @@
 	  android:gravity="center"
 	  />	 
 </LinearLayout> 
+
 	  <ExpandableListView
 	      android:id="@+id/LVListView"
-        android:layout_width="830dip"
-        android:layout_height="590dip"     
-       	android:fastScrollEnabled="true" 
-       	android:gravity="center"
-       	android:layout_gravity="center" 
-       android:childDivider="@color/linecolor"
-       	android:dividerHeight="1px"    
-	   > 
+	      android:layout_width="900dp"
+	      android:layout_height="560dip"
+	      android:layout_gravity="center"
+	      android:childDivider="@color/linecolor"
+	      android:dividerHeight="1px"
+	      android:fastScrollEnabled="true"
+	      android:gravity="center" >
+ 
 	  </ExpandableListView>    
 	  </LinearLayout>
 	  <!-- 右侧学号等信息 -->

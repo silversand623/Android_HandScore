@@ -5,7 +5,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bgimg" >
-
         <ImageView
             android:id="@+id/usernameimg"
             android:layout_width="46dp"
@@ -134,5 +133,4 @@
     android:textColor="#027BAD"
     android:textSize="20sp"
     android:textStyle="bold" />
-
 </com.example.webview.tools.ResizeLayout>
