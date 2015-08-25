@@ -3,7 +3,10 @@ package com.example.webview;
 
 import java.lang.reflect.Type;
 import java.net.URLDecoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.HashMap;
 
@@ -302,6 +305,7 @@ private Handler mHandler = new Handler();
         				map.put("itemZhuangtai", Status[Integer.parseInt(obj.student_state)]);
         				map.put("itemFenshu",obj.student_score);
         				map.put("U_ID", obj.U_ID);
+        				map.put("itemEndTime", obj.Exam_EndTime);
         				filterStudentArray.add(map);
                 	} 
                 	
@@ -320,6 +324,124 @@ private Handler mHandler = new Handler();
         });
 	}
 	
+	
+	public void getSystemTime(final HashMap<String, String> map)
+	{
+		SharedPreferences userInfo = getSharedPreferences("user_info",0);
+		if (!userInfo.contains("ipconfig")) {
+			return;
+		}
+		String BaseUrl = userInfo.getString("ipconfig", null);
+		String url="http://";
+	    url=url+BaseUrl+"/AppDataInterface/HandScore.aspx/SearchCurrentSystemDatetime";
+	    Ion.with(this)
+        .load(url)
+        .asString()
+        .setCallback(new FutureCallback<String>() {
+            @Override
+            public void onCompleted(Exception e, String result) {
+                if (e != null) {
+                    return;
+                }
+                //////
+                try {
+                	/*NSString *nsTime = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+                    //NSString *nsCompare = [nsTime substringFromIndex:10];
+                    NSLocale* local =[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+                    [formater setLocale: local];
+                    [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                    NSDate* dateSystem = [formater dateFromString:nsTime];
+                    NSDate* dateStart = [formater dateFromString:[NSString stringWithFormat:@"%@ %@:00",[nsTime substringToIndex:10],Info.Exam_StartTime]];
+                    NSDate* dateEnd = [formater dateFromString:[NSString stringWithFormat:@"%@ %@:00",[nsTime substringToIndex:10],Info.Exam_EndTime]];
+                    NSTimeInterval tmInterval1= [dateSystem timeIntervalSinceDate:dateStart];
+                    NSTimeInterval tmInterval2= [dateEnd timeIntervalSinceDate:dateSystem];
+                    
+                    TYAppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+                    appDelegate.gStudentId = Info.U_ID;
+                    
+                    if (tmInterval1 >= 0.0 && tmInterval2 >= 0.0) {
+                        
+                        ScoreViewController *scoreViewController=[[ScoreViewController alloc]init];
+                        scoreViewController.loginItem = appDelegate.gLoginItem;
+                        [self presentViewController:scoreViewController animated:YES completion:nil];
+                    } else if (tmInterval1 < 0.0)
+                    {
+                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"评分提示信息" message:@"当前学生还没有开始考试，请确认是否继续评分" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil ] ;
+                        [alert show];
+                    } else if (tmInterval2 < 0.0)
+                    {
+                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"评分提示信息" message:@"当前学生考试时间已过,请确认是否继续评分" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil ] ;
+                        [alert show];
+                    }*/
+                	//2015-08-24 15:38:53
+                	Date dateSystem=new Date();  
+                    Date dateStart=new Date();
+                    Date dateEnd=new Date();
+                    SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+                    String sStartTime = map.get("itemTime");
+                    String sEndTime = map.get("itemEndTime");
+                    try {                  
+                    	dateSystem=format.parse(result);  
+                    	dateStart=format.parse(String.format("%s %s:00", result.substring(0, 10),sStartTime));
+                    	dateEnd = format.parse(String.format("%s %s:00", result.substring(0, 10),sEndTime));
+                    	long lInterval1 = dateSystem.getTime() - dateStart.getTime();
+                    	long lInterval2 = dateEnd.getTime()-dateSystem.getTime();
+                    	if (lInterval1 >=0.0 && lInterval2 >=0.0) 
+                        {
+                        	Intent intent =new Intent(MainActivity.this,ScoreActivity.class); 
+                        	MainActivity.this.startActivity(intent);
+                        } else if (lInterval1 < 0.0)
+                        {
+                        	AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this); 
+           				 builder.setMessage("当前学生还没有开始考试，请确认是否继续评分？");
+           				 builder.setTitle("提示");
+           					builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {							
+           						public void onClick(DialogInterface dialog, int which) 
+           						{
+           							Intent intent =new Intent(MainActivity.this,ScoreActivity.class); 
+                                	MainActivity.this.startActivity(intent);
+           						 }
+           						});
+           					builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {					  
+           					 public void onClick(DialogInterface dialog, int which) {
+           						 dialog.dismiss();
+           					 }
+           					});
+           					builder.create().show();
+                        } else if (lInterval2 < 0.0)
+                        {
+                        	AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this); 
+              				 builder.setMessage("当前学生考试时间已过,请确认是否继续评分？");
+              				 builder.setTitle("提示");
+              					builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {							
+              						public void onClick(DialogInterface dialog, int which) 
+              						{
+              							Intent intent =new Intent(MainActivity.this,ScoreActivity.class); 
+                                   	MainActivity.this.startActivity(intent);
+              						 }
+              						});
+              					builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {					  
+              					 public void onClick(DialogInterface dialog, int which) {
+              						 dialog.dismiss();
+              					 }
+              					});
+              					builder.create().show();
+                        }
+                    } catch (ParseException e1) {  
+                        // TODO Auto-generated catch block  
+                        e1.printStackTrace();  
+                    }
+	            }
+                catch (Exception eJson) {
+                	////
+                }
+                /////
+                
+            }
+        });
+	}
+	    
 	@Override
 	 public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
 	 {
@@ -335,8 +457,8 @@ private Handler mHandler = new Handler();
 			this.startActivity(intent);
         } else
         {
-			Intent intent =new Intent(this,ScoreActivity.class); 
-			this.startActivity(intent);
+        	getSystemTime(map);
+			
         }
 	 } 
 	

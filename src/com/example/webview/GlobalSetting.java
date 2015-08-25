@@ -3,7 +3,10 @@ package com.example.webview;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.AlertDialog;
 import android.app.Application;
+import android.content.DialogInterface;
+
 import com.handscore.model.LoginInfoType;
 import com.handscore.model.MarkSheet;
 import com.handscore.model.StudentInfo;
@@ -62,4 +65,5 @@ public class GlobalSetting extends Application {
     {
         super.onCreate();
     }
+    
 }
