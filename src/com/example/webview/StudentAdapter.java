@@ -12,10 +12,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.daimajia.swipe.SimpleSwipeListener;
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.adapters.BaseSwipeAdapter;
 import com.koushikdutta.ion.Ion;
 
-public class StudentAdapter extends BaseAdapter {
+public class StudentAdapter extends BaseSwipeAdapter {
 
 	private ArrayList<HashMap<String, Object>> list;
 	private Context context;
@@ -53,10 +57,115 @@ public class StudentAdapter extends BaseAdapter {
 		return position;
 	}	
 	@SuppressLint("ResourceAsColor")
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder holder = null;
+//	@Override
+//	public View getView(int position, View convertView, ViewGroup parent) {
+//		ViewHolder holder = null;
+//
+//		if (convertView == null) {
+//			holder = new ViewHolder();
+//			convertView = LayoutInflater.from(context).inflate(
+//					R.layout.activity_mainlist, null);
+//			holder.img = (ImageView) convertView.findViewById(R.id.itemImage);
+//			holder.itemName = (TextView) convertView.findViewById(R.id.itemName);
+//			holder.itemTime = (TextView) convertView.findViewById(R.id.itemTime);
+//			holder.itemKaohao = (TextView) convertView.findViewById(R.id.itemKaohao);
+//			holder.itemXuehao = (TextView) convertView.findViewById(R.id.itemXuehao);
+//			holder.itemBanJi = (TextView) convertView.findViewById(R.id.itemBanJi);
+//			holder.itemZhuangtai = (TextView) convertView.findViewById(R.id.itemZhuangtai);
+//			holder.itemFenshu = (TextView) convertView.findViewById(R.id.itemFenshu);
+//			convertView.setTag(holder);
+//		} else {
+//			holder = (ViewHolder) convertView.getTag();
+//		}
+//
+//		if (position < list.size())
+//		{
+//			HashMap<String, Object> map = list.get(position);
+//			Object uid = map.get("U_ID");
+//			
+//			final String imgUrl = url+uid.toString();
+//			if (imgUrl != null && !imgUrl.equals("")) {
+//				
+//				// Use Ion's builder set the google_image on an ImageView from a URL
+//
+//                // start with the ImageView
+//                Ion.with(holder.img)
+//                // use a placeholder google_image if it needs to load from the network
+//                .placeholder(R.drawable.username)
+//                .error(R.drawable.username)
+//                // load the url
+//                .load(imgUrl);
+//			}
+//			
+//			holder.itemName.setText((String)map.get("itemName"));
+//			holder.itemTime.setText((String)map.get("itemTime"));
+//			holder.itemKaohao.setText((String)map.get("itemKaohao"));
+//			holder.itemXuehao.setText((String)map.get("itemXuehao"));
+//			holder.itemBanJi.setText((String)map.get("itemBanJi"));
+//			holder.itemZhuangtai.setText((String)map.get("itemZhuangtai"));
+//			if(map.get("itemZhuangtai").equals("ÒÑ¿¼"))
+//			{
+//				holder.itemZhuangtai.setTextColor(Color.parseColor("#55c439"));
+//			}
+//			else if(map.get("itemZhuangtai").equals("È±¿¼"))
+//			{
+//				holder.itemZhuangtai.setTextColor(Color.parseColor("#f5321e"));
+//			}
+//			else
+//			{
+//				holder.itemZhuangtai.setTextColor(Color.BLACK);
+//			}
+//			holder.itemFenshu.setText((String)map.get("itemFenshu"));
+//		}
+//		
+//		return convertView;
+//	}
 
+	class ViewHolder {
+		ImageView img;
+		TextView itemName;
+		TextView itemTime;
+		TextView itemKaohao;
+		TextView itemXuehao;
+		TextView itemBanJi;
+		TextView itemZhuangtai;
+		TextView itemFenshu;
+	}
+	
+	@Override
+    public int getSwipeLayoutResourceId(int position) {
+        return R.id.swipe;
+    }
+
+    @Override
+    public View generateView(int position, ViewGroup parent) {
+        View v = LayoutInflater.from(context).inflate(R.layout.activity_mainlist, null);
+        SwipeLayout swipeLayout = (SwipeLayout)v.findViewById(getSwipeLayoutResourceId(position));
+        swipeLayout.addSwipeListener(new SimpleSwipeListener() {
+            @Override
+            public void onOpen(SwipeLayout layout) {
+                //YoYo.with(Techniques.Tada).duration(500).delay(100).playOn(layout.findViewById(R.id.trash));
+            }
+        });
+        swipeLayout.setOnDoubleClickListener(new SwipeLayout.DoubleClickListener() {
+            @Override
+            public void onDoubleClick(SwipeLayout layout, boolean surface) {
+                Toast.makeText(context, "DoubleClick", Toast.LENGTH_SHORT).show();
+            }
+        });
+        v.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "click delete", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return v;
+    }
+
+    @Override
+    public void fillValues(int position, View convertView) {
+    	ViewHolder holder = null;
+    	
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = LayoutInflater.from(context).inflate(
@@ -114,17 +223,5 @@ public class StudentAdapter extends BaseAdapter {
 			holder.itemFenshu.setText((String)map.get("itemFenshu"));
 		}
 		
-		return convertView;
-	}
-
-	class ViewHolder {
-		ImageView img;
-		TextView itemName;
-		TextView itemTime;
-		TextView itemKaohao;
-		TextView itemXuehao;
-		TextView itemBanJi;
-		TextView itemZhuangtai;
-		TextView itemFenshu;
-	}
+    }
 }
