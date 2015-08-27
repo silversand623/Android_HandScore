@@ -123,7 +123,7 @@ public class SegmentSeekBarView extends LinearLayout{
 		segRightText.setText("-");	
 
 		
-		      XmlPullParser xrp = getResources().getXml(R.drawable.seg_text_color_selector);    
+		      XmlPullParser xrp = getResources().getXml(R.drawable.seg_text_color_selectorseek);    
 		       try { 
 		           ColorStateList csl = ColorStateList.createFromXml(getResources(), xrp);    
 		           segLeftText.setTextColor(csl);
@@ -133,9 +133,9 @@ public class SegmentSeekBarView extends LinearLayout{
 		       segLeftText.setGravity(Gravity.CENTER);
 		       segRightText.setGravity(Gravity.CENTER);
 		       setSegmentTextSize(25); 
-		       segLeftText.setBackgroundResource(R.drawable.seg_left);
-		       segRightText.setBackgroundResource(R.drawable.seg_right);
-		       segLeftText.setSelected(true);  
+		       segLeftText.setBackgroundResource(R.drawable.seg_leftseek);
+		       segRightText.setBackgroundResource(R.drawable.seg_rightseek);
+		       //segLeftText.setSelected(true);  
 		       this.removeAllViews(); 
 		       this.addView(TextValue); 
 		       this.addView(sb); 

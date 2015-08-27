@@ -182,6 +182,7 @@ public class LoginActivity extends Activity implements OnResizeListener,OnCancel
 				}
 				
 				else {
+					
 					mProgressHUD = ProgressHUD.show(arg0.getContext(),"正在登陆", true,true,cancel);		
 					userInfo.edit()
 							.putString("username",usernameEditText.getText().toString())
@@ -226,7 +227,10 @@ public class LoginActivity extends Activity implements OnResizeListener,OnCancel
             public void onCompleted(Exception e, JsonObject result) {
                 mProgressHUD.dismiss();
             	if (e != null) {
-                    return;
+            		if(result==null)
+            		{
+            			AlertMessage("网络连接错误。");
+            		}
                 }
                 //////
                 try {
@@ -248,9 +252,7 @@ public class LoginActivity extends Activity implements OnResizeListener,OnCancel
 	                
 	                }
 	            }
-                catch (Exception eJson) {
-                	////
-                	
+                catch (Exception eJson) {                	
                 }
                 /////
                 
@@ -307,18 +309,7 @@ public class LoginActivity extends Activity implements OnResizeListener,OnCancel
 	        }
 	    }
 	    if (nCase != ResultType.Success){
-		  
-	    	AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-	    	builder.setTitle("提示").setMessage(sMessage) 
-	    	      .setPositiveButton("确定", 
-	    	                    new DialogInterface.OnClickListener(){ 
-	    	                               public void onClick(DialogInterface dialoginterface, int i){ 
-	    	                                    //按钮事件 
-	    	                                 } 
-	    	                         }) 
-	    	        .show();
-	    	//builder.setTitle("提示").setMessage(sMessage).show();
-	    	
+	    	AlertMessage(sMessage);
 	    }
 	}	
 	@Override
@@ -503,5 +494,17 @@ public class LoginActivity extends Activity implements OnResizeListener,OnCancel
 			}
 		}
 		return super.onTouchEvent(event);
+	}
+	private void AlertMessage(String strMsg)
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this); 
+		builder.setTitle("提示").setMessage(strMsg) 
+	      .setPositiveButton("确定", 
+	                    new DialogInterface.OnClickListener(){ 
+	                               public void onClick(DialogInterface dialoginterface, int i){ 
+	                                    //按钮事件 
+	                                 } 
+	                         }) 
+	        .show();	        	
 	}
 }

@@ -106,8 +106,8 @@ public class ScoreViewActivity extends Activity {
 	            		labelExamNo.setText(URLDecoder.decode((String)map.get("itemXuehao"), "UTF-8"));
 	            		TextView labelName = (TextView)findViewById(R.id.TextKaoHao);
 	            		labelName.setText(URLDecoder.decode((String)map.get("itemKaohao"), "UTF-8"));
-	            		TextView labelStudentNo = (TextView)findViewById(R.id.TextXingMing);
-	            		labelStudentNo.setText(URLDecoder.decode((String)map.get("itemName"), "UTF-8"));
+	            		//TextView labelStudentNo = (TextView)findViewById(R.id.TextXingMing);
+	            		//labelStudentNo.setText(URLDecoder.decode((String)map.get("itemName"), "UTF-8"));
 	            		TextView labelClassName = (TextView)findViewById(R.id.TextBanji);
 	            		labelClassName.setText(URLDecoder.decode((String)map.get("itemBanJi"), "UTF-8"));
 	            		TextView TextZongFen=(TextView)findViewById(R.id.TextZongFen);

@@ -62,7 +62,7 @@ public class StudentAdapter extends BaseAdapter {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.activity_mainlist, null);
 			holder.img = (ImageView) convertView.findViewById(R.id.itemImage);
-			holder.itemName = (TextView) convertView.findViewById(R.id.itemName);
+			//holder.itemName = (TextView) convertView.findViewById(R.id.itemName);
 			holder.itemTime = (TextView) convertView.findViewById(R.id.itemTime);
 			holder.itemKaohao = (TextView) convertView.findViewById(R.id.itemKaohao);
 			holder.itemXuehao = (TextView) convertView.findViewById(R.id.itemXuehao);
@@ -93,7 +93,7 @@ public class StudentAdapter extends BaseAdapter {
                 .load(imgUrl);
 			}
 			
-			holder.itemName.setText((String)map.get("itemName"));
+			//holder.itemName.setText((String)map.get("itemName"));
 			holder.itemTime.setText((String)map.get("itemTime"));
 			holder.itemKaohao.setText((String)map.get("itemKaohao"));
 			holder.itemXuehao.setText((String)map.get("itemXuehao"));
@@ -119,7 +119,7 @@ public class StudentAdapter extends BaseAdapter {
 
 	class ViewHolder {
 		ImageView img;
-		TextView itemName;
+		//TextView itemName;
 		TextView itemTime;
 		TextView itemKaohao;
 		TextView itemXuehao;

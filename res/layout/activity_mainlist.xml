@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center" 
-    android:paddingLeft="45dip"     
+    android:paddingLeft="40dip"     
 >
  <ImageView  android:id="@+id/itemImage"
  	android:layout_width="60dip"
@@ -12,7 +12,7 @@
  	android:layout_centerHorizontal="true"
  		
 	></ImageView>
-<TextView
+<!-- <TextView
 android:id="@+id/itemName"
 android:layout_width="230dip"
 android:layout_height="wrap_content"
@@ -20,11 +20,11 @@ android:gravity="left"
 android:textColor="@color/ListFontColor"
 android:textSize="23dip"
 android:paddingLeft="100dip"   
- >
-</TextView>
+ > 
+</TextView>-->
 <TextView
 android:id="@+id/itemTime"
- android:layout_width="150dip"
+ android:layout_width="280dip"
 android:layout_height="wrap_content"
 android:gravity="center" 
 android:textColor="@color/ListFontColor"
@@ -51,7 +51,7 @@ android:textSize="23dip"
  　　    </TextView>
 <TextView
 android:id="@+id/itemBanJi"
-android:layout_width="150dip"
+android:layout_width="250dip"
 android:layout_height="wrap_content"
 android:gravity="center" 
 android:textColor="@color/ListFontColor"

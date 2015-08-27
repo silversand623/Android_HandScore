@@ -63,7 +63,7 @@ public class ScoreViewSeeActivity extends Activity {
  	MarkSheetScoreSee Infos;
  	//”“≤‡–≈œ¢ÃÓ≥‰
  	TextView labelExamNo;
-    TextView labelName ;
+    //TextView labelName ;
     TextView labelStudentNo;
     TextView labelClassName;
     TextView TextZongFen;
@@ -93,7 +93,7 @@ public class ScoreViewSeeActivity extends Activity {
 			    }
 			    labelStudentNo = (TextView)findViewById(R.id.TextXueHao);
 			    labelExamNo = (TextView)findViewById(R.id.TextKaoHao);
-			    labelName= (TextView)findViewById(R.id.TextXingMing);
+			    //labelName= (TextView)findViewById(R.id.TextXingMing);
 			    labelClassName = (TextView)findViewById(R.id.TextBanji);
 			    TextZongFen=(TextView)findViewById(R.id.TextZongFen);
 			    TextDeFen=(TextView)findViewById(R.id.TextDeFen);
@@ -213,7 +213,7 @@ public class ScoreViewSeeActivity extends Activity {
                 	
                 	labelStudentNo.setText(URLDecoder.decode(Infos.U_Name, "UTF-8"));   
                 	labelExamNo.setText(URLDecoder.decode(Infos.EStu_ExamNumber, "UTF-8"));   
-            		labelName.setText(URLDecoder.decode(Infos.U_TrueName, "UTF-8"));            		
+            		//labelName.setText(URLDecoder.decode(Infos.U_TrueName, "UTF-8"));            		
             		labelClassName.setText(URLDecoder.decode(Infos.O_Name, "UTF-8"));
             		TextZongFen.setText(Infos.MS_Sum);            		
             		TextDeFen.setText(Infos.SI_Score);
