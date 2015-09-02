@@ -6,11 +6,13 @@ import java.util.HashMap;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,10 @@ public class StudentAdapter extends SwipeAdapter {
     }
 	public void setList(ArrayList<HashMap<String, Object>> data)
 	{
+		if(swipe!=null)
+		{
+			swipe.close();
+		}
 		this.list = data;
 	}
 	
@@ -62,6 +68,9 @@ public class StudentAdapter extends SwipeAdapter {
 	}	
 
 	class ViewHolder {
+		TextView TvZhaoPian;
+		TextView TvPingFen;
+		TextView TvQueKao;
 		ImageView img;
 		//TextView itemName;
 		TextView itemTime;
@@ -78,8 +87,8 @@ public class StudentAdapter extends SwipeAdapter {
     public View generateView(int position, ViewGroup parent) {
         View v = LayoutInflater.from(context).inflate(R.layout.activity_mainlist, null);
         SwipeLayout swipeLayout = (SwipeLayout)v.findViewById(getSwipeLayoutResourceId(position));
-        Toast.makeText(context, "positon is "+position, Toast.LENGTH_SHORT).show();
-        final int pos = position;
+        //Toast.makeText(context, "positon is "+position, Toast.LENGTH_SHORT).show();
+        //final int pos = position;
         swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
 			@Override
 			public void onClose(SwipeLayout layout) {
@@ -94,7 +103,7 @@ public class StudentAdapter extends SwipeAdapter {
 
 			@Override
 			public void onOpen(SwipeLayout layout) {
-				Toast.makeText(context, "click open", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(context, "click open", Toast.LENGTH_SHORT).show();
 				//layout.close();
 				if (swipe != null && swipe!=layout)
 				{
@@ -112,12 +121,12 @@ public class StudentAdapter extends SwipeAdapter {
 			}
 		});
        
-        v.findViewById(R.id.TvPingFen).setOnClickListener(new View.OnClickListener() {
+        /*v.findViewById(R.id.TvPingFen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "click delete", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         return v;
     }
 
@@ -127,6 +136,9 @@ public class StudentAdapter extends SwipeAdapter {
     	
 		//if (convertView == null) {
 			holder = new ViewHolder();
+			holder.TvZhaoPian=(TextView) convertView.findViewById(R.id.TvZhaoPian);
+			holder.TvPingFen=(TextView) convertView.findViewById(R.id.TvPingFen);
+			holder.TvQueKao=(TextView) convertView.findViewById(R.id.TvQueKao);
 			//convertView = LayoutInflater.from(context).inflate(
 					//R.layout.activity_mainlist, null);
 			holder.img = (ImageView) convertView.findViewById(R.id.itemImage);
@@ -166,18 +178,28 @@ public class StudentAdapter extends SwipeAdapter {
 			holder.itemKaohao.setText((String)map.get("itemKaohao"));
 			holder.itemXuehao.setText((String)map.get("itemXuehao"));
 			holder.itemBanJi.setText((String)map.get("itemBanJi"));
+			
+
 			holder.itemZhuangtai.setText((String)map.get("itemZhuangtai"));
 			if(map.get("itemZhuangtai").equals("已考"))
-			{
+			{				
 				holder.itemZhuangtai.setTextColor(Color.parseColor("#55c439"));
+			
+				holder.TvQueKao.setVisibility(View.GONE);
+				holder.TvPingFen.setText("查看");
 			}
 			else if(map.get("itemZhuangtai").equals("缺考"))
-			{
+			{				
 				holder.itemZhuangtai.setTextColor(Color.parseColor("#f5321e"));
+				
+				holder.TvQueKao.setVisibility(View.GONE);
+				holder.TvPingFen.setText("评分");
 			}
 			else
 			{
 				holder.itemZhuangtai.setTextColor(Color.BLACK);
+				holder.TvQueKao.setVisibility(View.VISIBLE);
+				holder.TvPingFen.setText("评分");				
 			}
 			holder.itemFenshu.setText((String)map.get("itemFenshu"));
 		}

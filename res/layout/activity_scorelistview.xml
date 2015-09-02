@@ -8,12 +8,13 @@
 <TextView
 android:id="@+id/itemNeiRong"
 android:layout_width="700dip"
-android:layout_height="40dip"
+android:layout_height="wrap_content"
 android:textColor="@color/ListFontColor"
 android:textSize="23dip"
 android:singleLine="false"
 android:paddingLeft="40dip"
-android:gravity="center_vertical"
+android:paddingTop="5dip"
+android:paddingBottom="5dip"
  >
 </TextView>
 <TextView
