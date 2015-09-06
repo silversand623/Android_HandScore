@@ -52,7 +52,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AbsListView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -86,7 +85,6 @@ private  SwipeLayout wipe;
 			gv=(ListView)findViewById(R.id.LVList); 
 			
 			TVExit=(TextView)findViewById(R.id.TVExit); 
-			
 			//将图标图片和图标名称存入ArrayList中	
 			studentArray = new ArrayList<HashMap<String, Object>>();	
 			
@@ -392,35 +390,7 @@ private  SwipeLayout wipe;
                 }
                 //////
                 try {
-                	/*NSString *nsTime = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
-                    //NSString *nsCompare = [nsTime substringFromIndex:10];
-                    NSLocale* local =[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-                    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
-                    [formater setLocale: local];
-                    [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                    NSDate* dateSystem = [formater dateFromString:nsTime];
-                    NSDate* dateStart = [formater dateFromString:[NSString stringWithFormat:@"%@ %@:00",[nsTime substringToIndex:10],Info.Exam_StartTime]];
-                    NSDate* dateEnd = [formater dateFromString:[NSString stringWithFormat:@"%@ %@:00",[nsTime substringToIndex:10],Info.Exam_EndTime]];
-                    NSTimeInterval tmInterval1= [dateSystem timeIntervalSinceDate:dateStart];
-                    NSTimeInterval tmInterval2= [dateEnd timeIntervalSinceDate:dateSystem];
-                    
-                    TYAppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
-                    appDelegate.gStudentId = Info.U_ID;
-                    
-                    if (tmInterval1 >= 0.0 && tmInterval2 >= 0.0) {
-                        
-                        ScoreViewController *scoreViewController=[[ScoreViewController alloc]init];
-                        scoreViewController.loginItem = appDelegate.gLoginItem;
-                        [self presentViewController:scoreViewController animated:YES completion:nil];
-                    } else if (tmInterval1 < 0.0)
-                    {
-                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"评分提示信息" message:@"当前学生还没有开始考试，请确认是否继续评分" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil ] ;
-                        [alert show];
-                    } else if (tmInterval2 < 0.0)
-                    {
-                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"评分提示信息" message:@"当前学生考试时间已过,请确认是否继续评分" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil ] ;
-                        [alert show];
-                    }*/
+                	
                 	//2015-08-24 15:38:53
                 	Date dateSystem=new Date();  
                     Date dateStart=new Date();
