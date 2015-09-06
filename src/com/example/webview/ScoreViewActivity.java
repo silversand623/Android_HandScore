@@ -163,18 +163,7 @@ public class ScoreViewActivity extends Activity {
 				
                 //modify student state
 				if (signPath != null)
-				{
-				
-	                for (HashMap<String, Object> map : myApp.gStudnetArray)
-	                {
-	                	String sUid = (String)map.get("U_ID");
-		            	if (sUid == myApp.gStudentId)
-		            	{
-		            		map.put("itemZhuangtai","ÒÑ¿¼");
-		            		break;
-		            	}
-	                }
-	                
+				{				
 	                addScoreInfo();
 				} else
 				{					
@@ -286,9 +275,12 @@ public class ScoreViewActivity extends Activity {
                 			if(objStudent.get("U_ID").equals(myApp.gStudentId))
                 			{
                 				objStudent.put("itemFenshu", String.format("%.2f", getSum(0)));
+                				objStudent.put("itemZhuangtai","ÒÑ¿¼");
                 				break;
                 			}
                     	}
+                		
+                		
                 		//map.put("id", myApp.getId());
                 		//map.put("marksheet",Infos);
                 		//map.put("image", signPath);

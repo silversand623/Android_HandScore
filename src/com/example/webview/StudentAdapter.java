@@ -1,5 +1,6 @@
 package com.example.webview;
 
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +27,14 @@ import android.widget.Toast;
 import cn.king.swipelibrary.SwipeAdapter;
 import cn.king.swipelibrary.SwipeLayout;
 
+import com.example.webview.tools.CustomDialogImage;
+import com.example.webview.tools.DialogListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import com.handscore.model.LoginInfoType;
+import com.handscore.model.StudentInfo;
+import com.handscore.model.StudentInfo.Student;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -311,10 +320,96 @@ public class StudentAdapter extends SwipeAdapter {
 			holder.TvQueKao.setOnClickListener(new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {
-	                Toast.makeText(context, "que kao111", Toast.LENGTH_SHORT).show();
+	            	if (swipe != null)
+    				{
+    					swipe.close();
+    				}
+	                String userid = map.get("U_ID").toString();
+	                updateStudentInfo(userid);
+	            }
+	        });
+			
+			holder.TvZhaoPian.setOnClickListener(new View.OnClickListener() {
+	            @Override
+	            public void onClick(View view) {
+	                AlertImage(imgUrl);
 	            }
 	        });
 		}
 		
+    }
+    
+	private void updateStudentInfo(final String uId){
+		SharedPreferences userInfo = context.getSharedPreferences("user_info",0);
+		if (!userInfo.contains("ipconfig")) {
+			return;
+		}
+		String BaseUrl = userInfo.getString("ipconfig", null);
+		MainActivity activity = (MainActivity)context;
+	    GlobalSetting myApp = (GlobalSetting)activity.getApplication();
+	    LoginInfoType loginItem = myApp.getLoginItem();
+		String url="http://";
+	    url=url+BaseUrl+"/AppDataInterface/HandScore.aspx/AddScoreInfoWithMiss";
+	    Ion.with(context)
+        .load(url)
+        .setBodyParameter("E_ID", loginItem.E_ID)
+        .setBodyParameter("ES_ID", loginItem.ES_ID)
+        .setBodyParameter("Room_ID", loginItem.Room_ID) 
+        .setBodyParameter("U_ID", loginItem.U_ID) 
+        .setBodyParameter("Student_U_ID",uId) 
+        .setBodyParameter("EU_ID",loginItem.EU_ID) 
+        .asJsonObject()
+        .setCallback(new FutureCallback<JsonObject>() {
+            @Override
+            public void onCompleted(Exception e, JsonObject result) {
+                if (e != null) {
+                    return;
+                }
+                //////
+                try {
+                	if (result.has("result"))
+                	{
+                		String sResult = result.get("result").getAsString();
+                		
+                		if (sResult.equalsIgnoreCase("1"))
+                		{
+	                		for (HashMap<String, Object> map : list)
+	    	                {
+	    	                	String sUid = (String)map.get("U_ID");
+	    		            	if (uId == sUid)
+	    		            	{
+	    		            		map.put("itemZhuangtai","È±¿¼");
+	    		            		
+	    		            		notifyDataSetChanged();
+	    		            		break;
+	    		            	}
+	    	                }
+                		} else
+                		{
+                			
+                		}
+                	}
+                	
+	            }
+                catch (Exception eJson) {
+                	////
+                }
+                /////
+                
+            }
+        });
+	}
+    
+    public void AlertImage(String ImagePath)
+    {
+    	CustomDialogImage customDialog = new CustomDialogImage(
+				this.context, R.style.MyDialog,
+				new DialogListener() {
+					@Override
+					public void refreshActivity(Object object) {
+
+					}
+				}, ImagePath, false);
+		customDialog.show();
     }
 }
