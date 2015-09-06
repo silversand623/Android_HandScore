@@ -98,7 +98,7 @@ public class SettingActivity extends Activity {
 	        		if(Float.parseFloat(AllNumber)==0)
 	        		{
 	        			DialogAlert("评分间隔不能为0。");
-	        			eTextInterval.setText(1);
+	        			eTextInterval.setText("1");
 	        			return;
 	        		}
 	        		else
@@ -111,7 +111,7 @@ public class SettingActivity extends Activity {
 	        	{
 	        		//如果为空则默认1
 	        		DialogAlert("评分间隔不能为空。");
-		     			eTextInterval.setText(1);
+		     			eTextInterval.setText("1");
 		     			return;
 	        	}
 	        	//判断如果没有修改就不提示，是否确认修改
@@ -234,14 +234,15 @@ public class SettingActivity extends Activity {
 	};
 	public void DialogAlert(String Message)
 	{
-		 CustomDialog customDialog = new CustomDialog(SettingActivity.this,
-					R.style.MyDialog, new DialogListener() {
-						@Override
-						public void refreshActivity(Object object) {
-	
-						}
-					}, Message, false);
-			customDialog.show();
+		AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this); 
+		builder.setTitle("提示").setMessage(Message) 
+	      .setPositiveButton("确定", 
+	                    new DialogInterface.OnClickListener(){ 
+	                               public void onClick(DialogInterface dialoginterface, int i){ 
+	                                    //按钮事件 
+	                                 } 
+	                         }) 
+	        .show();	
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
