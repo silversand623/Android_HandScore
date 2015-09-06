@@ -485,22 +485,5 @@ private  SwipeLayout wipe;
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	 /*@Override
-	 protected void onDestroy()
-	 {		 
-			 GlobalSetting myApp = (GlobalSetting)getApplication();		
-			 myApp.gSegSelectedIndex=0;
-			 myApp.gLoginItem=null;
-			 myApp.gStudents=null;
-			 myApp.gMarkSheet=null;
-			 if(myApp.gStudnetArray!=null)
-			 {
-				 myApp.gStudnetArray.removeAll(myApp.gStudnetArray);
-			 }
-			 if(myApp.gScoreArray!=null){
-			 myApp.gScoreArray.removeAll(myApp.gScoreArray);
-			 }
-			 myApp.gStudentId=null;
-			 super.onDestroy();	
-	 }*/
+	 
 }
