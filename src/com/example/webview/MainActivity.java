@@ -39,6 +39,7 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -49,12 +50,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AbsListView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.handscore.model.StudentInfo;
+import cn.king.swipelibrary.SwipeLayout;
 
 @SuppressLint("JavascriptInterface")
 public class MainActivity extends Activity implements OnItemClickListener {
@@ -67,7 +71,9 @@ private ArrayList<HashMap<String, Object>> filterStudentArray;
 private StudentAdapter adapter;
 private final String Status[]=new String[] {"未定义","缺考","已考","未考"};
 private SegmentView seg;
-private Handler mHandler = new Handler();   
+private Handler mHandler = new Handler(); 
+
+private  SwipeLayout wipe;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +81,12 @@ private Handler mHandler = new Handler();
 		setContentView(R.layout.activity_main);
 		try {
 			seg=(SegmentView)findViewById(R.id.segView);
-            
+			//wipe=(SwipeLayout)findViewById(R.id.swipe);
+			//wipe.setrsetr
 			gv=(ListView)findViewById(R.id.LVList); 
+			
 			TVExit=(TextView)findViewById(R.id.TVExit); 
+			
 			//将图标图片和图标名称存入ArrayList中	
 			studentArray = new ArrayList<HashMap<String, Object>>();	
 			
@@ -159,16 +168,54 @@ private Handler mHandler = new Handler();
 			
 			gv.setOnItemClickListener(this);
 			
+			gv.setOnTouchListener(new View.OnTouchListener() {
+	            @Override
+	            public boolean onTouch(View v, MotionEvent event) {
+	                Log.e("ListView","OnTouch");
+	                return false;
+	            }
+	        });
+			gv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+	            @Override
+	            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+	                Log.e("ListView","onItemLongClick:" + position);
+	                return false;
+	            }
+	        });
+			gv.setOnScrollListener(new AbsListView.OnScrollListener() {
+	            @Override
+	            public void onScrollStateChanged(AbsListView view, int scrollState) {
+	                Log.e("ListView","onScrollStateChanged");
+	            }
+
+	            @Override
+	            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+	            }
+	        });
+
+			gv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+	            @Override
+	            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+	                Log.e("ListView", "onItemSelected:" + position);
+	            }
+
+	            @Override
+	            public void onNothingSelected(AdapterView<?> parent) {
+	                Log.e("ListView", "onNothingSelected:");
+	            }
+	        });
+			//已评曰，未评阅，全部
 			seg.setOnSegmentViewClickListener(new SegmentView.onSegmentViewClickListener() {
- 	             @Override  
- 	             public void onSegmentViewClick(View v,int position) {
- 	            	 GlobalSetting myApp = (GlobalSetting)getApplication();
- 	            	myApp.gSegSelectedIndex = position;
- 	            	 studentArray = getStudentArray(position);
- 	            	adapter.setList(studentArray);
-                	adapter.notifyDataSetChanged();
- 	                
- 	              }  
+	             @Override  
+	             public void onSegmentViewClick(View v,int position) {
+	            	 GlobalSetting myApp = (GlobalSetting)getApplication();
+	            	myApp.gSegSelectedIndex = position;
+	            	 studentArray = getStudentArray(position);
+	            	adapter.setList(studentArray);
+               	adapter.notifyDataSetChanged();
+	                
+	              }  
 		     });
 			
 		} catch (Exception e) {
