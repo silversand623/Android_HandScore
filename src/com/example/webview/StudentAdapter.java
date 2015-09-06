@@ -311,7 +311,7 @@ public class StudentAdapter extends SwipeAdapter {
 			holder.TvQueKao.setOnClickListener(new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {
-	                Toast.makeText(context, "que kao", Toast.LENGTH_SHORT).show();
+	                Toast.makeText(context, "que kao111", Toast.LENGTH_SHORT).show();
 	            }
 	        });
 		}
