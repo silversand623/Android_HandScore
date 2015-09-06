@@ -128,5 +128,4 @@ android:text=">"
 >
 </TextView>  
 </LinearLayout>
-
 </cn.king.swipelibrary.SwipeLayout>

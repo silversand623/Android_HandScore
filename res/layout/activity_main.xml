@@ -195,7 +195,7 @@
        	android:listSelector="@color/SelectBgColor"
        	android:layout_gravity="center"
         >       
-    </ListView>
+    </ListView>  
     </LinearLayout>    
 </LinearLayout>
 
