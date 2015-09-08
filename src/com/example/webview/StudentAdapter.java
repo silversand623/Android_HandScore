@@ -297,16 +297,16 @@ public class StudentAdapter extends SwipeAdapter {
 			holder.TvPingFen.setOnClickListener(new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {
+	            	String userid = map.get("U_ID").toString();
+            		MainActivity activity = (MainActivity)context;
+            	    GlobalSetting myApp = (GlobalSetting)activity.getApplication();  
+                    myApp.gStudentId = userid;
 	            	if (swipe != null)
     				{
     					swipe.close();
     				}
 	            	if(sStatus.equals("ÒÑ¿¼"))
 	            	{
-	            		String userid = map.get("U_ID").toString();
-	            		MainActivity activity = (MainActivity)context;
-	            	    GlobalSetting myApp = (GlobalSetting)activity.getApplication();  
-	                    myApp.gStudentId = userid;
 	            		Intent intent =new Intent(context,ScoreViewSeeActivity.class); 
 	        			context.startActivity(intent);
 	            	}
