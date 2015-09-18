@@ -400,8 +400,8 @@ private  SwipeLayout wipe;
                     String sEndTime = map.get("itemEndTime");
                     try {                  
                     	dateSystem=format.parse(result);  
-                    	dateStart=format.parse(String.format("%s %s:00", result.substring(0, 10),sStartTime));
-                    	dateEnd = format.parse(String.format("%s %s:00", result.substring(0, 10),sEndTime));
+                    	dateStart=format.parse(String.format("%s %s:00", result.substring(0, 5),sStartTime));
+                    	dateEnd = format.parse(String.format("%s %s:00", result.substring(0, 5),sEndTime));
                     	long lInterval1 = dateSystem.getTime() - dateStart.getTime();
                     	long lInterval2 = dateEnd.getTime()-dateSystem.getTime();
                     	if (lInterval1 >=0.0 && lInterval2 >=0.0) 
