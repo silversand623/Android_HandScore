@@ -42,7 +42,7 @@ public class StudentAdapter extends SwipeAdapter {
 
 	private ArrayList<HashMap<String, Object>> list;
 	private Context context;
-	private String url;
+	private String urlPath;
 	SwipeLayout swipe;
 
 	public StudentAdapter(Context context, ArrayList<HashMap<String, Object>> data) {
@@ -66,7 +66,7 @@ public class StudentAdapter extends SwipeAdapter {
 	
 	public void setUrl(String url)
 	{
-		this.url = url;
+		this.urlPath = url;
 	}
 	
 	@Override
@@ -249,6 +249,13 @@ public class StudentAdapter extends SwipeAdapter {
 			final HashMap<String, Object> map = list.get(position);
 			Object uid = map.get("U_ID");
 			
+			SharedPreferences userInfo = context.getSharedPreferences("user_info",0);
+			if (!userInfo.contains("ipconfig")) {
+				return;
+			}
+			String BaseUrl = userInfo.getString("ipconfig", null);
+			String url="http://";
+			url=url+BaseUrl+"/AppDataInterface/HandScore.aspx/SearchStudentPhoto?U_ID=";
 			final String imgUrl = url+uid.toString();
 			if (imgUrl != null && !imgUrl.equals("")) {
 				
@@ -262,6 +269,12 @@ public class StudentAdapter extends SwipeAdapter {
                 // load the url
                 .load(imgUrl);
 			}
+			
+			MainActivity activity = (MainActivity)context;
+		    GlobalSetting myApp = (GlobalSetting)activity.getApplication();
+		    LoginInfoType loginItem = myApp.getLoginItem();
+			url="http://"+BaseUrl+"/AppDataInterface/HandScore.aspx/SearchStudentPhotoFromUserPhoto?";
+			final String imgUpload = url+String.format("U_ID=%s&E_ID=%s", uid.toString(),loginItem.E_ID.toString());
 			
 			//holder.itemName.setText((String)map.get("itemName"));
 			holder.itemTime.setText((String)map.get("itemTime"));
@@ -332,7 +345,7 @@ public class StudentAdapter extends SwipeAdapter {
 			holder.TvZhaoPian.setOnClickListener(new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {
-	                AlertImage(imgUrl);
+	                AlertImage(imgUrl,imgUpload);
 	            }
 	        });
 		}
@@ -400,7 +413,7 @@ public class StudentAdapter extends SwipeAdapter {
         });
 	}
     
-    public void AlertImage(String ImagePath)
+    public void AlertImage(String ImagePath,String ImageUpload)
     {
     	CustomDialogImage customDialog = new CustomDialogImage(
 				this.context, R.style.MyDialog,
@@ -409,7 +422,7 @@ public class StudentAdapter extends SwipeAdapter {
 					public void refreshActivity(Object object) {
 
 					}
-				}, ImagePath, ImagePath, false);
+				}, ImagePath, ImageUpload, false);
 		customDialog.show();
     }
 }
