@@ -163,12 +163,13 @@ public class StudentAdapter extends SwipeAdapter {
                     Date dateStart=new Date();
                     Date dateEnd=new Date();
                     SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+                    SimpleDateFormat format1=new SimpleDateFormat("MM-dd HH:mm");
                     String sStartTime = map.get("itemTime").toString();
                     String sEndTime = map.get("itemEndTime").toString();
                     try {                  
                     	dateSystem=format.parse(result);  
-                    	dateStart=format.parse(String.format("%s %s:00", result.substring(0, 10),sStartTime));
-                    	dateEnd = format.parse(String.format("%s %s:00", result.substring(0, 10),sEndTime));
+                    	dateStart=format1.parse(sStartTime);
+                    	dateEnd = format1.parse(sEndTime);
                     	long lInterval1 = dateSystem.getTime() - dateStart.getTime();
                     	long lInterval2 = dateEnd.getTime()-dateSystem.getTime();
                     	if (lInterval1 >=0.0 && lInterval2 >=0.0) 
