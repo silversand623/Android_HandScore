@@ -96,7 +96,7 @@ public class LoginActivity extends Activity implements OnResizeListener,OnCancel
 		//LoginHidPanel=(LinearLayout) findViewById(R.id.LoginHidPanel);
 		
 		setupViews();
-		setfont();
+		//setfont();
 		userInfo = getSharedPreferences("user_info", 0);
 		if (userInfo.contains("username")) {
 			usernameEditText.setText(userInfo.getString("username", ""));
